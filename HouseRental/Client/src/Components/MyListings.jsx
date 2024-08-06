@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import AppContext from "../Context/AppContext"; // Ensure AppContext is imported
 import { useNavigate } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
 
 const MyListings = () => {
   const [listings, setListings] = useState([]); // State to store user listings
@@ -20,6 +21,17 @@ const MyListings = () => {
         withCredentials: true,
       });
       console.log("Post deleted:", response.data);
+      toast.error("Post Deleted", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
       // Remove the deleted post from the listings state
       setListings((prevListings) =>
         prevListings.filter((home) => home._id !== id)

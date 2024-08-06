@@ -36,11 +36,11 @@ const ShowListings = () => {
     addLike(postId);
   };
   return (
-    <div className=" w-full  ">
+    <div className=" w-full shadow-2xl ">
       <Subnavbar onFilterChange={handleFilterChange} />
-      <div className=" container cards flex justify-center align-middle flex-wrap gap-3 lg:grid lg:grid-cols-3 lg:place-items-center lg:justify-center ">
+      <div className=" container cards flex justify-center align-middle flex-wrap gap-3 lg:grid lg:grid-cols-3 lg:place-items-center lg:justify-center shadow-2xl ">
         {filteredListings.map((homes) => (
-          <div className="mt-6" key={homes._id}>
+          <div className="mt-6 shadow-2xl drop-shadow-xl" key={homes._id}>
             <div className="card cursor-pointer" style={{ width: "18rem" }}>
               <img
                 src={`${baseURL}${homes.images[0]}`}
@@ -59,9 +59,9 @@ const ShowListings = () => {
               <div className="card-body">
                 <a
                   onClick={() => handleLikeClick(homes._id)}
-                  className="card-link btn btn-warning mx-auto"
+                  className="card-link btn btn-warning mx-auto shadow-lg"
                 >
-                  <span className="material-symbols-outlined">favorite</span>
+                  <span className="material-symbols-outlined ">favorite</span>
                 </a>
               </div>
             </div>

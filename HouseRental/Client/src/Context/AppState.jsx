@@ -152,6 +152,17 @@ const AppState = (props) => {
           withCredentials: true,
         }
       );
+      toast.error("Removed from liked post", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
       // Remove the post from the local state
       setLikedPosts(likedPosts.filter((post) => post._id !== postId));
     } catch (error) {

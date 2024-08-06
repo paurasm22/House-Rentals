@@ -76,7 +76,7 @@ const Profile = () => {
       </div>
       <button
         onClick={() => navigate("/updateprofile")}
-        className="btn btn-warning flex justify-center align-middle mt-8"
+        className="btn btn-warning flex justify-center align-middle mt-8 shadow-xl"
       >
         Update Profile
       </button>

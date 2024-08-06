@@ -60,7 +60,7 @@ const Navbar = () => {
             id=""
             placeholder=" Search Something"
             onChange={handleSearchChange}
-            className="flex justify-center align-middle h-3/4 m-auto  w-70  placeholder:p-1 lg:w-80 pl-5"
+            className="flex justify-center align-middle h-3/4 m-auto  w-70  placeholder:p-1 lg:w-80 pl-5 shadow-2xl drop-shadow-sm"
           />
         </div>
         <div className="options grid grid-cols-3 mr-4 ml-4 gap-5">
@@ -69,7 +69,7 @@ const Navbar = () => {
             onClick={() => {
               navigate("/mylisting");
             }}
-            className="hover:bg-yellow-700"
+            className="hover:bg-yellow-700 shadow-2xl"
           >
             <span className="material-symbols-outlined">list_alt</span>
           </button>
