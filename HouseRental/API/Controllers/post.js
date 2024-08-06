@@ -4,17 +4,17 @@ import { Post } from '../Models/Post.js';
 
 import path from 'path';
 import multer from 'multer';
-// Function to handle file uploads and create a post
+
 export const createPost = async (req, res) => {
   try {
     const { title, roomnos, place, address, landmark, carpetArea, rent, deposit, featuamini, contact } = req.body;
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No files uploaded', success: false });
     }
-    const images = req.files.map(file => `/uploads/${file.filename}`); // Get file paths
+    const images = req.files.map(file => `/uploads/${file.filename}`); 
 
     const post = new Post({
-      user: req.user, // Ensure this comes from a valid user
+      user: req.user, 
       images,
       roomnos,
       place,
@@ -34,7 +34,6 @@ export const createPost = async (req, res) => {
   }
 };
 
-// Function to get all posts
 export const getPosts = async (req, res) => {
   try {
     const posts = await Post.find().sort({ createdAt: -1 });
@@ -48,7 +47,7 @@ export const getPosts = async (req, res) => {
 
 export const getPostsByUser = async (req, res) => {
   try {
-    const userId = req.user._id; // Get userId from request parameters
+    const userId = req.user._id; 
     if (!userId) {
       return res.status(400).json({ message: 'User ID is required' });
     }
@@ -82,7 +81,7 @@ export const updatePost = async (req, res) => {
     const { postId } = req.params;
     const { roomnos, place, address, landmark, carpetArea, rent, deposit, featuamini, contact } =  await req.body;
     
-    // Construct the updates object
+    
      const updates =  {
       roomnos,
       place,
@@ -98,7 +97,7 @@ export const updatePost = async (req, res) => {
     console.log('PostId:', postId);
     console.log('Updates:', updates);
 
-    // Validate postId
+    
     if (!mongoose.Types.ObjectId.isValid(postId)) {
       return res.status(400).json({ message: 'Invalid post ID' });
     }
@@ -111,7 +110,7 @@ export const updatePost = async (req, res) => {
 
     res.json({ message: 'Post updated successfully', post });
   } catch (error) {
-    console.error('Update Error:', error); // Log the error
+    console.error('Update Error:', error); 
     res.status(500).json({ message: error.message });
   }
 };
@@ -120,12 +119,12 @@ export const getPostById = async (req, res) => {
   try {
     const { postId } = req.params;
 
-    // Validate postId
+   
     if (!mongoose.Types.ObjectId.isValid(postId)) {
       return res.status(400).json({ message: 'Invalid post ID' });
     }
 
-    // Find the post by ID
+  
     const post = await Post.findById(postId);
 
     if (!post) {
@@ -134,7 +133,7 @@ export const getPostById = async (req, res) => {
 
     res.json(post);
   } catch (error) {
-    console.error('Get Post Error:', error); // Log the error
+    console.error('Get Post Error:', error); 
     res.status(500).json({ message: error.message });
   }
 };

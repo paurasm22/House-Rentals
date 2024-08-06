@@ -20,7 +20,7 @@ const AppState = (props) => {
   const [token, setToken] = useState();
   const [listings, setListings] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // Add search query state
+  const [searchQuery, setSearchQuery] = useState("");
 
   const login = async (email, password) => {
     const api = await axios.post(
@@ -35,16 +35,12 @@ const AppState = (props) => {
     );
 
     console.log("user Login", api.data);
-    // console.log("Is admin", api.data.admin);
-    // localStorage.setItem("admin", api.data.admin);
-    // setAdmin(api.data.admin);
+
     setToken(api.data.token);
     localStorage.setItem("token", api.data.token);
     setisAuthenticated(true);
     fetchLikedPosts();
-    // alert(
-    //   "This is not a final build .Many bugs are yet to be fixed ! Reload Page if problem loading data . Press OK to continue "
-    // );
+
     return api.data;
   };
 
@@ -84,8 +80,6 @@ const AppState = (props) => {
     });
     setListings(api.data);
     console.log(api.data);
-    // setProducts(api.data.products);
-    // setFilteredData(api.data.products);
   };
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -134,7 +128,6 @@ const AppState = (props) => {
         theme: "colored",
         transition: Bounce,
       });
-      // Refresh liked posts after adding a new like
     } catch (error) {
       console.error("Error liking post:", error);
     }

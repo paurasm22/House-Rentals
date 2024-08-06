@@ -8,14 +8,12 @@ const ShowListings = () => {
   const { listings, searchQuery, addLike } = useContext(AppContext);
   const navigate = useNavigate();
 
-  // State to manage selected filter
   const [filter, setFilter] = useState("All");
 
   const handleFilterChange = (selectedFilter) => {
     setFilter(selectedFilter);
   };
 
-  // Filter listings based on the selected filter
   const filteredListings = listings
     .filter((homes) => {
       if (filter === "All") return true;
@@ -27,7 +25,7 @@ const ShowListings = () => {
     })
     .filter((homes) =>
       homes.place.toLowerCase().includes(searchQuery.toLowerCase())
-    ); // Filter by search query
+    );
 
   const handleInfoClick = () => {
     navigate("/addpost");

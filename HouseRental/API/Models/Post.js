@@ -31,15 +31,15 @@ const postSchema = new mongoose.Schema({
     required: true
   },
   carpetArea: {
-    type: String, // Changed to Number if it's meant to be numeric
+    type: String, 
     required: true
   },
   rent: {
-    type: String, // Changed to Number if it's meant to be numeric
+    type: String, 
     required: true
   },
   deposit: {
-    type: String, // Changed to Number if it's meant to be numeric
+    type: String, 
     required: true
   },
   featuamini: {

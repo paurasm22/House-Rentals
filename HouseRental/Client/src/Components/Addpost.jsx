@@ -15,7 +15,7 @@ const Addpost = () => {
     deposit: "",
     featuamini: "",
     contact: "",
-    images: [], // This will handle file uploads
+    images: [],
   });
 
   const handleChange = (e) => {

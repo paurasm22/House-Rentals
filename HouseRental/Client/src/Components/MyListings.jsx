@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import AppContext from "../Context/AppContext"; // Ensure AppContext is imported
+import AppContext from "../Context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const MyListings = () => {
-  const [listings, setListings] = useState([]); // State to store user listings
+  const [listings, setListings] = useState([]);
   const navigate = useNavigate();
-  const { token } = useContext(AppContext); // Get token from context
+  const { token } = useContext(AppContext);
   const baseURL = "http://localhost:1000";
   const url = "http://localhost:1000/api";
 
@@ -32,7 +32,7 @@ const MyListings = () => {
         theme: "colored",
         transition: Bounce,
       });
-      // Remove the deleted post from the listings state
+
       setListings((prevListings) =>
         prevListings.filter((home) => home._id !== id)
       );
@@ -52,14 +52,14 @@ const MyListings = () => {
           withCredentials: true,
         });
         console.log("Listings of a user:", response.data);
-        setListings(response.data); // Set the listing data
+        setListings(response.data);
       } catch (error) {
         console.error("Error fetching listings:", error);
       }
     };
 
-    fetchListings(); // Fetch the listing data when component mounts
-  }, [token]); // Dependency array includes `token`
+    fetchListings();
+  }, [token]);
 
   return (
     <div>

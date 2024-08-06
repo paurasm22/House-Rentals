@@ -11,12 +11,12 @@ const Navbar = () => {
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    handleSearch(query); // Update context with search query
+    handleSearch(query);
   };
-  // Function to handle logout
+
   const handleLogout = () => {
     setisAuthenticated(false);
-    localStorage.removeItem("token"); // Remove token from local storage
+    localStorage.removeItem("token");
     toast.error("Logged OUT !", {
       position: "top-center",
       autoClose: 3000,
@@ -29,12 +29,10 @@ const Navbar = () => {
       transition: Bounce,
     });
     navigate("/login");
-    // Navigate to login page
   };
 
-  // Function to handle login button click
   const handleLogin = () => {
-    navigate("/login"); // Navigate to login page
+    navigate("/login");
   };
 
   return (

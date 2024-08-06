@@ -83,17 +83,15 @@ export const profile = async (req,res)=>{
 }
 
 
-// Add a post to user's liked posts
 export const likePost = async (req, res) => {
-  const { postId } = req.body; // ID of the post to like
+  const { postId } = req.body; 
   try {
-    const user = await User.findById(req.user._id); // Use req.user to get the current user
+    const user = await User.findById(req.user._id); 
     if (!user) return res.json({ message: "User not found", success: false });
 
     const post = await Post.findById(postId);
     if (!post) return res.json({ message: "Post not found", success: false });
 
-    // Add postId to user's likedPosts array if it's not already there
     if (!user.likedPosts.includes(postId)) {
       user.likedPosts.push(postId);
       await user.save();
@@ -106,14 +104,13 @@ export const likePost = async (req, res) => {
   }
 };
 
-// Remove a post from user's liked posts
 export const unlikePost = async (req, res) => {
-  const { postId } = req.body; // ID of the post to unlike
+  const { postId } = req.body; 
   try {
-    const user = await User.findById(req.user._id); // Use req.user to get the current user
+    const user = await User.findById(req.user._id); 
     if (!user) return res.json({ message: "User not found", success: false });
 
-    // Remove postId from user's likedPosts array
+    
     user.likedPosts = user.likedPosts.filter(id => id.toString() !== postId);
     await user.save();
     res.json({ message: "Post unliked successfully", success: true });
@@ -122,10 +119,10 @@ export const unlikePost = async (req, res) => {
   }
 };
 
-// Get all liked posts of the user
+
 export const getLikedPosts = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).populate('likedPosts'); // Populate to get post details
+    const user = await User.findById(req.user._id).populate('likedPosts'); 
     if (!user) return res.json({ message: "User not found", success: false });
 
     res.json({ likedPosts: user.likedPosts, success: true });

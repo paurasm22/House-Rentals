@@ -7,8 +7,8 @@ const ListingDetail = () => {
   const baseURL = "http://localhost:1000";
   const { id } = useParams();
   const { token } = useContext(AppContext);
-  const [listing, setListing] = useState(null); // State to store the listing data
-  const url = "http://localhost:1000/api"; // Define URL for API calls
+  const [listing, setListing] = useState(null);
+  const url = "http://localhost:1000/api";
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -28,10 +28,10 @@ const ListingDetail = () => {
     };
 
     fetchListing(); // Fetch the listing data when component mounts or `id` changes
-  }, [id, token]); // Dependency array includes `id` and `token`
+  }, [id, token]);
 
   if (!listing) {
-    return <div>Loading...</div>; // Optionally handle loading state
+    return <div>Loading...</div>;
   }
 
   return (

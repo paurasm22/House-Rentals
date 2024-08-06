@@ -8,7 +8,7 @@ const LikedPosts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchLikedPosts(); // Fetch liked posts when component mounts
+    fetchLikedPosts();
   }, [fetchLikedPosts]);
 
   const baseURL = "http://localhost:1000";
